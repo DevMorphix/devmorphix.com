@@ -1224,7 +1224,28 @@ section {
   overflow: hidden;
   border-radius: 5px;
   width: 100%;
-  height: 250px; /* Fixed height for all images */
+  height: 250px; /* Fixed height for larger screens */
+}
+
+/* Increase height for medium screens */
+@media (max-width: 991px) {
+  .team .member .member-img {
+    height: 300px; /* Increased height for medium screens */
+  }
+}
+
+/* Increase height for small screens */
+@media (max-width: 767px) {
+  .team .member .member-img {
+    height: 350px; /* Increased height for small screens */
+  }
+}
+
+/* Increase height for extra small screens */
+@media (max-width: 575px) {
+  .team .member .member-img {
+    height: 400px; /* Increased height for extra small screens */
+  }
 }
 
 .team .member .social {
@@ -1291,10 +1312,35 @@ section {
   transition: bottom ease-in-out 0.4s;
 }
 
-@media (min-width: 992px) {
-  .team .col-lg-3 {
+/* Ensure 5 members in a row on larger screens */
+@media (min-width: 1200px) {
+  .team .col-lg-2 {
     flex: 0 0 20%;
     max-width: 20%;
+  }
+}
+
+/* Ensure 4 members in a row on medium screens */
+@media (max-width: 991px) {
+  .team .col-lg-3 {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+}
+
+/* Ensure 3 members in a row on small screens */
+@media (max-width: 767px) {
+  .team .col-lg-4 {
+    flex: 0 0 33.33%;
+    max-width: 33.33%;
+  }
+}
+
+/* Stack members on top of each other on extra small screens */
+@media (max-width: 575px) {
+  .team .col-lg-3 {
+    flex: 0 0 50%;
+    max-width: 50%;
   }
 }
 
