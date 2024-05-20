@@ -873,26 +873,31 @@
   <!-- <script src="assets/vendor/php-email-form/validate.js"></script> -->
 
   <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
-    $("#submit-form").submit((e)=>{
-        e.preventDefault()
-        $.ajax({
-            url:"https://script.google.com/macros/s/AKfycbwar7H5uJ8prBU05lzw7UnKh8uNUe-W0AlHr61MRArWLXjuPoNxw5oUf1e9KjGZ2UwU/exec",
-            data:$("#submit-form").serialize(),
-            method:"post",
-            success:function (response){
-                alert("Form submitted successfully")
-                window.location.reload()
-                //window.location.href="https://google.com"
-            },
-            error:function (err){
-                alert("Something Error")
-
-            }
-        })
-    })
-</script>
+      $("#submit-form").submit((e)=>{
+          e.preventDefault();
+          $.ajax({
+              url:"https://script.google.com/macros/s/AKfycbwar7H5uJ8prBU05lzw7UnKh8uNUe-W0AlHr61MRArWLXjuPoNxw5oUf1e9KjGZ2UwU/exec",
+              data:$("#submit-form").serialize(),
+              method:"post",
+              success:function (response){
+                  // Show popup message
+                  $(".sent-message").fadeIn();
+                  // Hide popup message after 10 seconds
+                  setTimeout(function() {
+                      $(".sent-message").fadeOut();
+                  }, 10000);
+                  // Clear form fields after submission
+                  $('#submit-form')[0].reset();
+              },
+              error:function (err){
+                  alert("Something Error");
+              }
+          });
+      });
+  </script>
+  
 
 </body>
 
